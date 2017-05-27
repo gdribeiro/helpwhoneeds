@@ -55,3 +55,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 
 # From here to the bottom things were added by me
+#
+# This gem let's upload files
+gem 'carrierwave', '~> 0.10.0'
