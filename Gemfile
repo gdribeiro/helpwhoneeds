@@ -53,8 +53,9 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-
 # From here to the bottom things were added by me
 #
 # This gem let's upload files
 gem 'carrierwave', '~> 0.10.0'
+# Let us create users with all the administrative stuff
+gem 'devise', '~> 4.3'
