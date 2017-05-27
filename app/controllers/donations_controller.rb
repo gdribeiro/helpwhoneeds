@@ -14,7 +14,10 @@ class DonationsController < ApplicationController
 
   # GET /donations/new
   def new
-    @donation = Donation.new
+    #   Old constructor
+    # @donation = Donation.new
+    # The new one is ...
+    @donation = current_user.donations.build
   end
 
   # GET /donations/1/edit
@@ -24,7 +27,10 @@ class DonationsController < ApplicationController
   # POST /donations
   # POST /donations.json
   def create
-    @donation = Donation.new(donation_params)
+    #   Old definition for create
+    # @donation = Donation.new(donation_params)
+    # The new one is ...
+    @donation = current_user.donations.build(donation_params)
 
     respond_to do |format|
       if @donation.save
