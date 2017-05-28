@@ -11,8 +11,13 @@
 </p>
 
 <p>
-  <strong>Donationdatte:</strong>
+  <strong>Donation date:</strong>
   <%= @donation.donationDatte %>
+</p>
+
+<p>
+	<strong>User ID: </strong>
+	<%= @donation.user_id %>
 </p>
 
 <%= link_to 'Edit', edit_donation_path(@donation) %> |

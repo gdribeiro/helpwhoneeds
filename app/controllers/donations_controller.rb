@@ -4,7 +4,7 @@ class DonationsController < ApplicationController
   # GET /donations
   # GET /donations.json
   def index
-    @donations = Donation.all
+    @donations = current_user.donations.all
   end
 
   # GET /donations/1
@@ -14,7 +14,7 @@ class DonationsController < ApplicationController
 
   # GET /donations/new
   def new
-    @donation = Donation.new
+    @donation = current_user.donations.new
   end
 
   # GET /donations/1/edit
@@ -24,7 +24,7 @@ class DonationsController < ApplicationController
   # POST /donations
   # POST /donations.json
   def create
-    @donation = Donation.new(donation_params)
+    @donation = current_user.donations.new(donation_params)
 
     respond_to do |format|
       if @donation.save
@@ -64,7 +64,7 @@ class DonationsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_donation
-      @donation = Donation.find(params[:id])
+      @donation = current_user.donations.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
