@@ -1,5 +1,7 @@
 <h2>Sign up</h2>
-<% unless params[:wants_to_be_charity] || resource.is_a?(Charity) %>
+<% if params[:wants_to_be_charity] || resource.is_a?(Charity) %>
+  <%= link_to "Quer ser uma usuário doador?", new_user_registration_path %>
+<% else %>
   <%= link_to "Quer ser uma ONG?", new_user_registration_path(wants_to_be_charity: true) %>
 <% end %>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
