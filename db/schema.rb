@@ -10,15 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170528202800) do
+ActiveRecord::Schema.define(version: 20170529141207) do
 
   create_table "donations", force: :cascade do |t|
     t.string "description"
     t.decimal "value"
-    t.date "donationDatte"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
+    t.string "recipient_type"
+    t.integer "recipient_id"
+    t.index ["recipient_type", "recipient_id"], name: "index_donations_on_recipient_type_and_recipient_id"
     t.index ["user_id"], name: "index_donations_on_user_id"
   end
 
