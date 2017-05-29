@@ -5,6 +5,11 @@ class DonationsController < ApplicationController
   # GET /donations.json
   def index
     @donations = current_user.donations.all
+    if params[:search]
+      @donations = current_user.donations.search(params[:search]).order("created_at DESC")
+    else
+      @donations = current_user.donations.all.order('created_at DESC')
+    end
   end
 
   # GET /donations/1
