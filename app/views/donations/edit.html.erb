@@ -1,6 +1,7 @@
 <h1>Editing Donation</h1>
+<h2>Caridade: <%= @charity.name %></h2>
 
-<%= render 'form', donation: @donation %>
+<%= render 'form', donation: @donation, form_url: charity_donation_path(@charity, @donation) %>
 
-<%= link_to 'Show', @donation %> |
-<%= link_to 'Back', donations_path %>
+<%= link_to 'Show', charity_donation_path(@charity, @donation) %> |
+<%= link_to 'Back', charity_donations_path(@charity) %>

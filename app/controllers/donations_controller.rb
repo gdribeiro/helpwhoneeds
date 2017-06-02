@@ -1,14 +1,14 @@
 class DonationsController < ApplicationController
+  before_action :set_charity
   before_action :set_donation, only: [:show, :edit, :update, :destroy]
 
   # GET /donations
   # GET /donations.json
   def index
-    @donations = current_user.donations.all
     if params[:search]
-      @donations = current_user.donations.search(params[:search]).order("created_at DESC")
+      @donations = @charity.donations.search(params[:search]).order("created_at DESC")
     else
-      @donations = current_user.donations.all.order('created_at DESC')
+      @donations = @charity.donations.all.order('created_at DESC')
     end
   end
 
@@ -19,7 +19,7 @@ class DonationsController < ApplicationController
 
   # GET /donations/new
   def new
-    @donation = current_user.donations.new
+    @donation = @charity.donations.new(user: current_user)
   end
 
   # GET /donations/1/edit
@@ -29,13 +29,13 @@ class DonationsController < ApplicationController
   # POST /donations
   # POST /donations.json
   def create
-    @donation = current_user.donations.new(donation_params)
-
+    @donation = @charity.donations.new(donation_params)
     respond_to do |format|
       if @donation.save
-        format.html { redirect_to @donation, notice: 'Donation was successfully created.' }
+        format.html { redirect_to charity_donation_path(@charity, @donation), notice: 'Donation was successfully created.' }
         format.json { render :show, status: :created, location: @donation }
       else
+        byebug
         format.html { render :new }
         format.json { render json: @donation.errors, status: :unprocessable_entity }
       end
@@ -47,7 +47,7 @@ class DonationsController < ApplicationController
   def update
     respond_to do |format|
       if @donation.update(donation_params)
-        format.html { redirect_to @donation, notice: 'Donation was successfully updated.' }
+        format.html { redirect_to charity_donation_path(@charity, @donation), notice: 'Donation was successfully updated.' }
         format.json { render :show, status: :ok, location: @donation }
       else
         format.html { render :edit }
@@ -69,11 +69,17 @@ class DonationsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_donation
-      @donation = current_user.donations.find(params[:id])
+      @donation = @charity.donations.find(params[:id])
+    end
+
+    def set_charity
+      @charity = Charity.find(params[:charity_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def donation_params
-      params.require(:donation).permit(:description, :value, :donationDatte)
+      donation_params = params.require(:donation)
+      donation_params[:user_id] = current_user.id
+      donation_params.permit(:user_id, :description, :value, :recipient_id)
     end
 end
