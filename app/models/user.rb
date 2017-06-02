@@ -13,11 +13,10 @@ class User < ApplicationRecord
 
   before_save :check_if_wants_to_be_charity
 
-
   private
 
   def check_if_wants_to_be_charity
-    if wants_to_be_charity
+    if wants_to_be_charity == 'true'
       self.type = 'Charity'
     end
   end
