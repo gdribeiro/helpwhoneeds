@@ -1,5 +1,5 @@
 <h2>Sign up</h2>
-<% if params[:wants_to_be_charity] || resource.is_a?(Charity) %>
+<% if params[:wants_to_be_charity] || resource.wants_to_be_charity == 'true' %>
   <%= link_to "Quer ser uma usuário doador?", new_user_registration_path %>
 <% else %>
   <%= link_to "Quer ser uma ONG?", new_user_registration_path(wants_to_be_charity: true) %>
@@ -20,7 +20,7 @@
   </div>
 
 
-  <% if params[:wants_to_be_charity] || resource.is_a?(Charity) %>
+  <% if params[:wants_to_be_charity] || resource.wants_to_be_charity == 'true' %>
     <div class="field">
       <%= f.label :cnpj %>
       <%= f.text_field :cnpj %>

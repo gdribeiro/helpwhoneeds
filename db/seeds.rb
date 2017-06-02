@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-donations = Donation.create([{description: "Doação ao Médicos Sem Fronteiras", value: 1500.00}, 
+Donation.create([{description: "Doação ao Médicos Sem Fronteiras", value: 1500.00},
 	{description: "Donation to Doctors Without Borders", value: 1200.00, user_id: 1}, 
 	{description: "Donation to Doctors Without Borders", value: 800.00, user_id: 1}, 
 	{description: "Donation to Doctors Without Borders", value: 150.00, user_id: 1}, 
