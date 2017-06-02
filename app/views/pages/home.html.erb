@@ -1,4 +1,16 @@
-<% @charities.each do |charity| %>
-	<h1><%= charity.inspect %></h1>
-	<%= link_to charity.name, charity_path(charity) %>
-<% end %>
+<h1>Instituições Cadastradas</h1>
+
+<table>
+	<thead>
+		<tr>
+			<th>Nome</th>
+		</tr>
+	</thead>
+	<tbody>
+	<% @charities.each do |charity| %>
+		<tr>
+			<td> <%= link_to(charity.name, charity_path(charity)) %> </td>
+		</tr>
+	<% end %>
+	</tbody>
+</table>
