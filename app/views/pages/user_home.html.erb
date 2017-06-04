@@ -1,0 +1,85 @@
+<h1>Instituições Cadastradas</h1>
+
+<table>
+	<thead>
+		<tr>
+			<th>Nome</th>
+		</tr>
+	</thead>
+	<tbody>
+	<% @charities.each do |charity| %>
+		<tr>
+			<td> <%= link_to(charity.name, charity_path(charity)) %> </td>
+		</tr>
+	<% end %>
+	</tbody>
+</table>
+
+
+
+
+
+
+
+
+<h1>Doações Efetuadas por Você Para Organizações</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>  Organização </th>
+      <th>  Valor  </th>
+      <th>  Data  </th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @donations_to_charities.each do |donation| %>
+      <% if donation.recipient_type == "Charity" %>
+      	<% @charity =  Charity.find(donation.recipient_id) %>
+	      <tr>
+	        <td><%= link_to @charity.name, charity_path(@charity) %></td>
+	        <td><%= donation.value %></td>
+	        <td><%= donation.created_at.strftime("%d/%m/%Y") %></td>
+	      </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+<h1>Doações Efetuadas por Você Para Projetos</h1>
+<table>
+  <thead>
+    <tr>
+      <th>  Projeto  </th>
+      <th>  Organização </th>
+      <th>  Valor  </th>
+      <th>  Data  </th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @donations_to_projects.each do |donation| %>
+      <% unless donation.recipient_type == "Charity" %>
+      	<% @project = Project.find(donation.recipient_id) %>
+      	<% @charity = Charity.find(@project.user_id) %>
+	      <tr>
+	        <td><%= link_to @project.name, project_path(@project) %></td>
+	        <td><%= link_to @charity.name, charity_path(@charity) %></td>
+	        <td><%= donation.value %></td>
+	        <td><%= donation.created_at.strftime("%d/%m/%Y") %></td>
+	      </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>

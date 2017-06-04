@@ -1,5 +1,31 @@
 <h1><%= @charity.name %></h1>
 <%= link_to "Doar", new_charity_donation_path(@charity) %>
+<h2>Projetos</h2>
+
+
+<table>
+  <thead>
+    <tr>
+      <th>  Nome </th>
+      <th>  Valor Arrecadado  </th>
+      <th>  Objetivo  </th>
+      <th>  Data  </th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @projects.each do |project| %>
+      <tr>
+        <td><%= link_to(project.name, project_path(project)) %></td>
+        <td><%= project.current_amount  %> R$</td>
+        <td><%= project.goal_amount  %> R$</td>
+        <td><%= project.created_at.strftime("%d/%m/%Y") %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
 <h2>Doações</h2>
 <table>
   <thead>
@@ -15,8 +41,9 @@
   	<% @total = 0 %>
     <% @donations.each do |donation| %>
     <% @total = @total + donation.value %>
+    <% @user = User.find(donation.user_id) %>
       <tr>
-        <td><%=  User.find(donation.user_id).name %></td>
+        <td><%= link_to @user.name, user_path(@user) %></td>
         <td><%= donation.value  %> R$</td>
         <td><%= donation.created_at.strftime("%d/%m/%Y") %></td>
       </tr>

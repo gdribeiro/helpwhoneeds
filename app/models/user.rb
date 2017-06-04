@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :donations
-
+  has_many :projects
   attr_accessor :wants_to_be_charity
 
   validates :name, presence: true

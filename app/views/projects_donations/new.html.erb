@@ -1,0 +1,5 @@
+<h1>Create a new donation to <%= @name %></h1>
+
+<%= render 'form', donation: @donation, form_url: project_projects_donations_path(@project) %>
+
+<%= link_to 'Back', projects_path(@project) %>

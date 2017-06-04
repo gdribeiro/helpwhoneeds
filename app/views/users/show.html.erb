@@ -1,0 +1,61 @@
+<p id="notice"><%= notice %></p>
+
+<h2>
+  <strong><%= @user.name %></strong>
+</h2>
+
+<p>
+  <%= @user.email %>
+</p>
+
+<h3>Doações para Instituições</h3>
+
+<table>
+	<thead>
+		<tr>
+			<th>Instituição</th>
+			<th>Valor</th>
+			<th>Data</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<% @donations_to_charities.each do |donation| %>
+			<% @recipient = Charity.find(donation.recipient_id) %>
+			<tr>
+				<td><%= link_to @recipient.name, charity_path(@recipient) %></td>
+				<td><%= donation.value %></td>
+				<td><%= donation.created_at.strftime("%d/%m/%Y")  %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+
+
+
+
+<h3>Doações para projetos</h3>
+
+<table>
+	<thead>
+		<tr>
+			<th>Projeto</th>
+			<th>Instituição</th>
+			<th>Valor</th>
+			<th>Data</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<% @donations_to_projects.each do |donation| %>
+			<% @project = Project.find(donation.recipient_id) %>
+			<% @charity = Charity.find(@project.user_id) %>
+			<tr>
+				<td><%= link_to @project.name, project_path(@project) %></td>
+				<td><%= link_to @charity.name, charity_path(@charity) %></td>
+				<td><%= donation.value %></td>
+				<td><%= donation.created_at.strftime("%d/%m/%Y")  %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

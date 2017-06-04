@@ -1,6 +1,7 @@
 class CharitiesController < ApplicationController
   def show
   	@charity = Charity.find(params[:id])
-  	@donations = @charity.donations
+  	@donations = Donation.where(recipient_id: @charity.id)
+  	@projects = Project.where(user_id: @charity.id)
   end
 end
