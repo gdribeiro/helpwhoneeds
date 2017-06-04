@@ -1,16 +1,90 @@
-<h1>Instituições Cadastradas</h1>
+<% if current_user.instance_of? Charity %>
+	<h1>Seus Projetos </h1>
+	<table>
+	  <thead>
+	    <tr>
+          <th>  Nome  </th>
+	      <th>  Valor Arrecadado  </th>
+	      <th>  Objetivo  </th>
+	      <th>  Data  </th>
+	      <th colspan="3"></th>
+	    </tr>
+	  </thead>
 
-<table>
-	<thead>
-		<tr>
-			<th>Nome</th>
-		</tr>
-	</thead>
-	<tbody>
-	<% @charities.each do |charity| %>
-		<tr>
-			<td> <%= link_to(charity.name, charity_path(charity)) %> </td>
-		</tr>
-	<% end %>
-	</tbody>
-</table>
+	  <tbody>
+	    <% Project.all.where("user_id LIKE ?", current_user.id).each do |project| %>
+	      <tr>
+	        <td> <%= link_to(project.name, project_path(project)) %> </td>
+	        <td><%= project.current_amount %></td>
+	        <td><%= project.goal_amount %></td>
+	        <td><%= project.created_at.strftime("%d/%m/%Y") %></td>
+	      </tr>
+	    <% end %>
+	  </tbody>
+	</table>
+	<%= link_to("Criar novo projeto", new_project_path) %>
+
+	<h1>Doações Recebidas</h1>
+
+	<table>
+	  <thead>
+	    <tr>
+	      <th>  Doador  </th>
+	      <th>  Valor  </th>
+	      <th>  Data  </th>
+	      <th colspan="3"></th>
+	    </tr>
+	  </thead>
+
+	  <tbody>
+	    <% Donation.all.where("recipient_id LIKE ?", current_user.id).each do |donation| %>
+	      <tr>
+	        <td><%= User.find(donation.user_id).name %></td>
+	        <td><%= donation.value %></td>
+	        <td><%= donation.created_at.strftime("%d/%m/%Y") %></td>
+	      </tr>
+	    <% end %>
+	  </tbody>
+	</table>
+
+<% else %>
+	<h1>Instituições Cadastradas</h1>
+
+	<table>
+		<thead>
+			<tr>
+				<th>Nome</th>
+			</tr>
+		</thead>
+		<tbody>
+		<% @charities.each do |charity| %>
+			<tr>
+				<td> <%= link_to(charity.name, charity_path(charity)) %> </td>
+			</tr>
+		<% end %>
+		</tbody>
+	</table>
+
+	<h1>Doações Efetuadas por Você</h1>
+
+	<table>
+	  <thead>
+	    <tr>
+	      <th>  Organização </th>
+	      <th>  Valor  </th>
+	      <th>  Data  </th>
+	      <th colspan="3"></th>
+	    </tr>
+	  </thead>
+
+	  <tbody>
+	    <% Donation.all.where("user_id LIKE ?", current_user.id).each do |donation| %>
+	      <tr>
+	        <td><%= Charity.find(donation.recipient_id).name %></td>
+	        <td><%= donation.value %></td>
+	        <td><%= donation.created_at.strftime("%d/%m/%Y") %></td>
+	      </tr>
+	    <% end %>
+	  </tbody>
+	</table>
+<% end %>

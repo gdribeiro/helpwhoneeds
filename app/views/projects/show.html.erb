@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nome do projeto:</strong>
+  <%= @project.name %>
+</p>
+
+<p>
+  <strong>Descrição:</strong>
+  <%= @project.description %>
+</p>
+
+<p>
+  <strong>Objetivo:</strong>
+  <%= @project.goal_amount %> R$
+</p>
+
+<p>
+  <strong>Valor Arrecadado:</strong>
+  <%= @project.current_amount %> R$
+</p>
+
+<p>
+	<strong>Organização: </strong>
+	<%= User.find(@project.user_id).name %>
+</p>
+
+<p>
+	<%= @project.inspect %>
+</p>
