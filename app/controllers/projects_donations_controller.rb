@@ -69,16 +69,6 @@ class ProjectsDonationsController < ApplicationController
     end
   end
 
-  def get_recipient_name
-    if @donation.recipient_type == "Charity"
-      Charity.find(@donation.recipient_id).name
-    elsif @donation.recipient_type == "Project"
-      Project.find(@donation.recipient_id).name
-    end
-  end
-  helper_method :get_recipient_name
-
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_donation
@@ -96,4 +86,6 @@ class ProjectsDonationsController < ApplicationController
       donation_params[:recipient_type] = "Project"
       donation_params.permit(:user_id, :description, :value, :recipient_id,:recipient_type)
     end
+
+
 end

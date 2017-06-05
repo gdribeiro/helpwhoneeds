@@ -21,5 +21,8 @@ class PagesController < ApplicationController
 
   def ranking
 
+    @users = User.find_by_sql(["select name, id, total_value from users inner join (select user_id, sum(value) as total_value from donations group by user_id) as donations_sum on users.id = donations_sum.user_id order by total_value DESC LIMIT 10 "])
+
   end
+
 end

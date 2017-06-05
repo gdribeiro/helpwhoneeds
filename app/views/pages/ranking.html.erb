@@ -1,3 +1,23 @@
 <h2>Os maiores doadores serão mostrados aqui (ainda não implementado)</h2>
 
+<table>
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>Nome</th>
+			<th>Valor total doado</th>
+		</tr>
+	</thead>
 
+	<tbody>
+		<% i=0 %>
+		<% @users.each do |user| %>
+			<% i += 1 %>
+			<tr>
+				<td><%= i %></td>
+				<td><%= link_to user.name, user_path(user) %></td>
+				<td><%= user.total_value %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
 	before_action :set_project, only: [:show, :edit, :update, :destroy]
+
 	def new
 		@project = Project.new(user_id: current_user.id)
 	end
@@ -32,4 +33,5 @@ class ProjectsController < ApplicationController
     	project_params[:current_amount] = 0
     	project_params.permit(:name, :description, :goal_amount, :user_id, :current_amount)
     end
+
 end
