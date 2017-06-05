@@ -13,3 +13,7 @@
  *= require_tree .
  *= require_self
  */
+
+.menu-button:hover {
+	background-color: #eeeeee
+}

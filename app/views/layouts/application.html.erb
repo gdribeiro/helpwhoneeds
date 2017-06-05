@@ -24,15 +24,18 @@
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active">
-                            <a href="/ranking">Ranking</a>
+                        <li class="menu-button">
+                            <a href="/ranking">Maiores Doadores</a>
+                        </li>
+                        <li class="menu-button">
+                            <a href="/projects">Projetos</a>
                         </li>
                     </ul>
                     <!-- Login Logout signin stuff -->
                     <p class="navbar-text pull-right">
                         <% if user_signed_in? %>
                         Logged in as
-                        <strong><%= current_user.name %></strong>.
+                        <strong><%= link_to current_user.name, user_path(current_user) %></strong>.
                         <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %>
                         |
                         <%= link_to "Sign out", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>

@@ -9,6 +9,10 @@ class ProjectsController < ApplicationController
 
 	end
 
+	def index
+		@projects = Project.all
+	end
+
 	def create
 	    @project = Project.new(project_params)
 	    respond_to do |format|
