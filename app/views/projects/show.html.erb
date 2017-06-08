@@ -22,7 +22,7 @@
 
 <p>
 	<strong>Organização: </strong>
-	<%= User.find(@project.user_id).name %>
+	<%= link_to @charity.name, charity_path(@charity) %>
 </p>
 
 <% unless current_user.instance_of? Charity %>

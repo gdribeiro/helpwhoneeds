@@ -6,7 +6,7 @@ class ProjectsController < ApplicationController
 	end
 
 	def show
-
+		@charity = Charity.find(@project.user_id)
 	end
 
 	def index

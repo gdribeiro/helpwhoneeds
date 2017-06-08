@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   end
 
 
-  resources :charities, only: [:show] do
+  resources :charities, only: [:show, :index] do
     resources :donations
   end
 

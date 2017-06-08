@@ -10,30 +10,30 @@
   <%= f.hidden_field :wants_to_be_charity, value: params[:wants_to_be_charity] %>
 
   <div class="field">
-    <%= f.label :email %>
-    <%= f.email_field :email, autofocus: true %>
+    <%= f.label "Nome" %>
+    <%= f.text_field :name %>
   </div>
 
   <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+    <%= f.label :email %>
+    <%= f.email_field :email, autofocus: true %>
   </div>
 
 
   <% if params[:wants_to_be_charity] || resource.wants_to_be_charity == 'true' %>
     <div class="field">
-      <%= f.label :cnpj %>
+      <%= f.label "CNPJ" %>
       <%= f.text_field :cnpj %>
     </div>
   <% else %>
     <div class="field">
-      <%= f.label :cpf %>
+      <%= f.label "CPF" %>
       <%= f.text_field :cpf %>
     </div>
   <% end %>
 
   <div class="field">
-    <%= f.label :password %>
+    <%= f.label "Senha" %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
@@ -41,12 +41,11 @@
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %>
+    <%= f.label "Comfirme sua senha" %>
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
-
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "Cadastrar" %>
   </div>
 <% end %>
 
