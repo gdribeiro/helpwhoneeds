@@ -16,7 +16,7 @@ class ProjectsController < ApplicationController
 	def edit
 		@charity = Charity.find(@project.user_id)
 	end
-	
+
 	def create
 	    @project = Project.new(project_params)
 	    respond_to do |format|
@@ -29,6 +29,20 @@ class ProjectsController < ApplicationController
 	      end
     	end
     end
+
+    def update
+    respond_to do |format|
+      if @project.update(project_params)
+        format.html { redirect_to project_path(@project), notice: 'Project was successfully updated.' }
+        format.json { render :show, status: :ok, location: @project }
+      else
+        format.html { render :edit }
+        format.json { render json: @project.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+
     private
 
     def set_project
