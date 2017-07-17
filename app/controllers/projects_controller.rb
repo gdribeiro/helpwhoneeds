@@ -13,6 +13,10 @@ class ProjectsController < ApplicationController
 		@projects = Project.all
 	end
 
+	def edit
+		@charity = Charity.find(@project.user_id)
+	end
+	
 	def create
 	    @project = Project.new(project_params)
 	    respond_to do |format|
@@ -35,7 +39,7 @@ class ProjectsController < ApplicationController
     	project_params = params.require(:project)
     	project_params[:user_id] = current_user.id
     	project_params[:current_amount] = 0
-    	project_params.permit(:name, :description, :goal_amount, :user_id, :current_amount)
+    	project_params.permit(:name, :description, :goal_amount, :project_type, :user_id, :current_amount)
     end
 
 end

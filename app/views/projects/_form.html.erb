@@ -21,6 +21,11 @@
   </div>
 
   <div class="field">
+    <%= form.label "Categoria"%>
+    <%= form.select(:project_type, options_for_select([["Alimentos", "Alimentos"], ["Infraestrutura", "Infraestrutura"], ["Educação", "Educação"], ["Roupas", "Roupas"], ["Lazer", "Lazer"], ["Outro", "Outro"]])) %>
+  </div>
+
+  <div class="field">
     <%= form.label :goal_amount %>
     <%= form.text_field :goal_amount, id: :project_goal_amount %>
   </div>

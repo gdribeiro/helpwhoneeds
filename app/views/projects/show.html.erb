@@ -11,6 +11,11 @@
 </p>
 
 <p>
+	<strong>Categoria:</strong>
+	<%= @project.project_type %>
+</p>
+
+<p>
   <strong>Objetivo:</strong>
   <%= @project.goal_amount %> R$
 </p>
@@ -24,6 +29,10 @@
 	<strong>Organização: </strong>
 	<%= link_to @charity.name, charity_path(@charity) %>
 </p>
+
+<% if current_user.id == @charity.id %>
+	<%= link_to "Editar", edit_project_path(@project) %>
+<% end %>
 
 <% unless current_user.instance_of? Charity %>
 <%= link_to("Doar para este projeto", new_project_projects_donation_path(@project)) %>
