@@ -9,10 +9,10 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
 
-    sign_up_params = [:name, :cpf, :cnpj, :wants_to_be_charity]
+    sign_up_params = [:name, :cpf, :cnpj, :wants_to_be_charity, :charity_type]
     devise_parameter_sanitizer.permit(:sign_up, keys: sign_up_params)
 
-    account_update_params = [:name, :cpf, :cnpj]
-    devise_parameter_sanitizer.permit(:account_update, keys: [:username])
+    account_update_params = [:name, :cpf, :cnpj, :charity_type]
+    devise_parameter_sanitizer.permit(:account_update, keys: account_update_params)
   end
 end
