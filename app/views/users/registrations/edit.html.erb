@@ -31,6 +31,15 @@
     <%= f.password_field :current_password, autocomplete: "off" %>
   </div>
 
+  <% if current_user.type == "Charity" %>
+    <div class="field">
+      <%= f.label "Tipo de Instituição" %>
+      <%= f.select(:charity_type, options_for_select([["Creche", "Creche"], ["Asilo", "Asilo"], ["Orfanato", "Orfanato"], ["Canil", "Canil"], ["Outro", "Outro"]])) %>
+    </div>
+
+  <% end %>
+
+
   <div class="actions">
     <%= f.submit "Update" %>
   </div>

@@ -25,6 +25,12 @@
       <%= f.label "CNPJ" %>
       <%= f.text_field :cnpj %>
     </div>
+
+    <div class="field">
+      <%= f.label "Tipo de Instituição" %>
+      <%= f.select(:charity_type, options_for_select([["Creche", "Creche"], ["Asilo", "Asilo"], ["Orfanato", "Orfanato"], ["Canil", "Canil"], ["Outro", "Outro"]])) %>
+    </div>
+
   <% else %>
     <div class="field">
       <%= f.label "CPF" %>
