@@ -53,7 +53,7 @@ class ProjectsController < ApplicationController
     	project_params = params.require(:project)
     	project_params[:user_id] = current_user.id
     	project_params[:current_amount] = 0
-    	project_params.permit(:name, :description, :goal_amount, :project_type, :user_id, :current_amount)
+    	project_params.permit(:name, :description, :goal_amount, :project_type, :user_id, :current_amount, :urgent)
     end
 
 end

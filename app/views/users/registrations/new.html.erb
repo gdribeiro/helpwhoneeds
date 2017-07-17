@@ -1,4 +1,4 @@
-<h2>Sign up</h2>
+<h2>Cadastro</h2>
 <% if params[:wants_to_be_charity] || resource.wants_to_be_charity == 'true' %>
   <%= link_to "Quer ser uma usuário doador?", new_user_registration_path %>
 <% else %>
@@ -55,4 +55,4 @@
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<%= link_to "Entrar", new_session_path(resource_name) %>

@@ -1,5 +1,9 @@
 <p id="notice"><%= notice %></p>
 
+<% if @project.urgent %>
+	<h2 text-color="red">URGENTE!</h2>
+<% end %>
+
 <p>
   <strong>Nome do projeto:</strong>
   <%= @project.name %>

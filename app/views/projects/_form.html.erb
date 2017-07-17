@@ -26,6 +26,11 @@
   </div>
 
   <div class="field">
+    <%= form.label "Urgência: " %>
+    <%= form.select(:urgent, options_for_select([["Alta", true], ["Baixa", false]])) %>
+  </div>
+
+  <div class="field">
     <%= form.label :goal_amount %>
     <%= form.text_field :goal_amount, id: :project_goal_amount %>
   </div>
