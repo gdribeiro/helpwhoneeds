@@ -22,13 +22,13 @@ User.create([{email: "jmartins@email.com", password: '123123', password_confirma
 	{email: "jtribbiani@email.com", password: '123123', password_confirmation: '123123', name: "Joey Tribbiani", cpf: "12345678913"},])
 
 
-Charity.create([{email: "msf@email.com", password: '123123', password_confirmation: '123123', name: "Médicos Sem Fronteiras", cnpj: "12345678914"},
-	{email: "fbmg@email.com", password: '123123', password_confirmation: '123123', name: "Fundação Bill e Melinda Gates", cnpj: "12345678915"},
-	{email: "pd@email.com", password: '123123', password_confirmation: '123123', name: "Patas Dadas", cnpj: "12345678916"}])
+Charity.create([{email: "msf@email.com", password: '123123', password_confirmation: '123123', name: "Médicos Sem Fronteiras", charity_type: "Outros", cnpj: "12345678914"},
+	{email: "fbmg@email.com", password: '123123', password_confirmation: '123123', name: "Fundação Bill e Melinda Gates", charity_type: "Outros", cnpj: "12345678915"},
+	{email: "pd@email.com", password: '123123', password_confirmation: '123123', name: "Patas Dadas", charity_type: "Canil", cnpj: "12345678916"}])
 
-Project.create([{name: "Ração para Cachorro", description: "Precisamos de dinheiro para comprar ração para os 34 cachorros que estão sobre os nossos cuidados.", goal_amount: 500, current_amount: 0, user_id: 17},
-	{name: "Roupas para os Cachorros", description: "Com a chegada do inverno, precisamos comprar roupas mais quentes para os cachorros menos adaptados ao clima frio.", goal_amount: 1000, current_amount: 0, user_id: 17},
-	{name: "Consulta com um médico veterinário", description: "Um dos nossos cachorros passou mal durante o fim de semana do dia 03/06/95 e nós precisamos levar ele para um veterinário, agora precisamos de ajuda para podermos pagar a conta.", goal_amount: 100, current_amount: 0, user_id: 17}])
+Project.create([{name: "Ração para Cachorro", description: "Precisamos de dinheiro para comprar ração para os 34 cachorros que estão sobre os nossos cuidados.", goal_amount: 500, current_amount: 0, project_type: "Alimentos", user_id: 17},
+	{name: "Roupas para os Cachorros", description: "Com a chegada do inverno, precisamos comprar roupas mais quentes para os cachorros menos adaptados ao clima frio.", goal_amount: 1000, current_amount: 0, project_type: "Roupas", user_id: 17},
+	{name: "Consulta com um médico veterinário", description: "Um dos nossos cachorros passou mal durante o fim de semana do dia 03/06/95 e nós precisamos levar ele para um veterinário, agora precisamos de ajuda para podermos pagar a conta.", goal_amount: 100, current_amount: 0, project_type: "Saúde", user_id: 17}])
 
 Donation.create([{description: "Doação ao Médicos Sem Fronteiras", value: 1500.00, user_id: 1, recipient_type: "Charity", recipient_id: 15},
 	{description: "Doação ao Médicos Sem Fronteiras", value: 1100.00, user_id: 2, recipient_type: "Charity", recipient_id: 15},

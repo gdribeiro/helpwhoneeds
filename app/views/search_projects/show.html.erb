@@ -1,0 +1,58 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Keywords:</strong>
+  <%= @search_project.keywords %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @search_project.type %>
+</p>
+
+<p>
+  <strong>Urgent:</strong>
+  <%= @search_project.urgent %>
+</p>
+
+<p>
+  <strong>Min amout asked:</strong>
+  <%= @search_project.min_amout_asked %>
+</p>
+
+<p>
+  <strong>Max amount asked:</strong>
+  <%= @search_project.max_amount_asked %>
+</p>
+
+<p>
+  <strong>New:</strong>
+  <%= @search_project.new %>
+</p>
+
+<p>
+  <strong>Show:</strong>
+  <%= @search_project.show %>
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>  Nome  </th>
+      <th>  Valor Arrecadado  </th>
+      <th>  Objetivo  </th>
+      <th>  Data  </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @projects.each do |project| %>
+      <tr>
+        <td> <%= link_to(project.name, project_path(project)) %> </td>
+        <td><%= project.current_amount %></td>
+        <td><%= project.goal_amount %></td>
+        <td><%= project.created_at.strftime("%d/%m/%Y") %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

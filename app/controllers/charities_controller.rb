@@ -6,6 +6,10 @@ class CharitiesController < ApplicationController
   end
 
   def index
-  	@charities = Charity.all
+  	if params[:term]
+		@charities = Charity.where("name LIKE ?", "%#{params[:term]}%")
+	else
+		@charities = Charity.all			
+	end
   end
 end

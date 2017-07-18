@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Search Projects</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Keywords</th>
+      <th>Type</th>
+      <th>Urgent</th>
+      <th>Min amout asked</th>
+      <th>Max amount asked</th>
+      <th>New</th>
+      <th>Show</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @search_projects.each do |search_project| %>
+      <tr>
+        <td><%= search_project.keywords %></td>
+        <td><%= search_project.type %></td>
+        <td><%= search_project.urgent %></td>
+        <td><%= search_project.min_amout_asked %></td>
+        <td><%= search_project.max_amount_asked %></td>
+        <td><%= search_project.new %></td>
+        <td><%= search_project.show %></td>
+        <td><%= link_to 'Show', search_project %></td>
+        <td><%= link_to 'Edit', edit_search_project_path(search_project) %></td>
+        <td><%= link_to 'Destroy', search_project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Search Project', new_search_project_path %>

@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  keywords: MyString
+  type: 
+  urgent: false
+  min_amout_asked: 9.99
+  max_amount_asked: 9.99
+  new: MyString
+  show: MyString
+
+two:
+  keywords: MyString
+  type: 
+  urgent: false
+  min_amout_asked: 9.99
+  max_amount_asked: 9.99
+  new: MyString
+  show: MyString

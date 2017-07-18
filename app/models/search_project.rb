@@ -1,0 +1,2 @@
+class SearchProject < ApplicationRecord
+end

@@ -1,0 +1,42 @@
+<%= form_with(model: search_project, local: true) do |form| %>
+  <% if search_project.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(search_project.errors.count, "error") %> prohibited this search_project from being saved:</h2>
+
+      <ul>
+      <% search_project.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :keywords %>
+    <%= form.text_field :keywords, id: :search_project_keywords %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Categoria"%>
+    <%= form.select(:type, options_for_select([["Alimentos", "Alimentos"], ["Infraestrutura", "Infraestrutura"], ["Educação", "Educação"], ["Roupas", "Roupas"], ["Lazer", "Lazer"], ["Outro", "Outro"]])) %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Urgência: " %>
+    <%= form.select(:urgent, options_for_select([[" ", nil], ["Alta", true], ["Baixa", false]])) %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Valor mínimo:" %>
+    <%= form.text_field :min_amout_asked, id: :search_project_min_amout_asked %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Valor máximo: " %>
+    <%= form.text_field :max_amount_asked, id: :search_project_max_amount_asked %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Pesquisar" %>
+  </div>
+<% end %>

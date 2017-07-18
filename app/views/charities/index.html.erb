@@ -1,6 +1,15 @@
 
 <h2>Instituições</h2>
 
+<div>
+  <%= form_tag(charities_path, method: :get) do %>
+    <%= text_field_tag :term, params[:term] %>
+     <%= submit_tag 'Procurar' %>
+  <% end %>
+</div>
+  
+
+
 
 <table>
   <thead>

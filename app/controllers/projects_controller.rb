@@ -10,7 +10,11 @@ class ProjectsController < ApplicationController
 	end
 
 	def index
-		@projects = Project.all
+		if params[:term]
+			@projects = Project.where("name LIKE ?", "%#{params[:term]}%")
+		else
+			@projects = Project.all			
+		end
 	end
 
 	def edit
@@ -53,7 +57,7 @@ class ProjectsController < ApplicationController
     	project_params = params.require(:project)
     	project_params[:user_id] = current_user.id
     	project_params[:current_amount] = 0
-    	project_params.permit(:name, :description, :goal_amount, :project_type, :user_id, :current_amount, :urgent)
+    	project_params.permit(:name, :description, :goal_amount, :project_type, :user_id, :current_amount, :urgent, :term)
     end
 
 end

@@ -2,6 +2,17 @@
 
 <h1>Projetos</h1>
 
+<div>
+  <%= form_tag(projects_path, method: :get) do %>
+    <%= text_field_tag :term, params[:term] %>
+     <%= submit_tag 'Procurar' %>
+  <% end %>
+</div>
+  
+  
+
+
+
 <table>
   <thead>
     <tr>
